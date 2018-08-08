@@ -9,11 +9,11 @@ const Value = ({ name, value }) => (
   </View>
 );
 
-export default class Acceleration extends Component {
+export default class Profile extends Component {
   constructor(props) {
     super(props);
 
-    new Accelerometer({
+    /*new Accelerometer({
       updateInterval: 400 // defaults to 100ms
     })
       .then(observable => {
@@ -22,7 +22,7 @@ export default class Acceleration extends Component {
       .catch(error => {
         console.log("The sensor is not available");
       });
-
+*/
     this.state = {
       x: 0,
       y: 0,
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = Acceleration;
+module.exports = Profile;

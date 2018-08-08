@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import ReactNative from "react-native";
 
-import SwappableGrid from "../components/SwappableGrid";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { ActionCreators } from "../actions";
+
 //import {App} from './App';
 import Dimensions from "Dimensions";
 
 import ImageTypes from "../components/ImageTypes";
 
-var HomeScreen = require("../components/HomeScreen");
-var GameScreen = require("../components/GameScreen");
+var ProfileScreen = require("../screens/ProfileScreen");
+var LoginScreen = require("../screens/LoginScreen");
 
 const {
   View,
@@ -20,39 +23,66 @@ const {
   ImageBackground
 } = ReactNative;
 
-import { TabNavigator, StackNavigator } from "react-navigation";
+import {
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
 
-const Game = ({ navigation, screenProps }) => {
-  return <GameScreen navigation={navigation} screenProps={screenProps} />;
+const Profile = ({ navigation, screenProps }) => {
+  return <ProfileScreen navigation={navigation} screenProps={screenProps} />;
 };
 
-const Home = ({ navigation, screenProps }) => {
-  return <HomeScreen navigation={navigation} screenProps={screenProps} />;
+const Login = ({ navigation, screenProps }) => {
+  return <LoginScreen navigation={navigation} screenProps={screenProps} />;
 };
 
-const PlayerTabs = TabNavigator({
-  MainTab: {
-    screen: Game,
+const ProfileNavigator = createStackNavigator({
+  Root: {
+    screen: Profile,
     navigationOptions: {
-      title: "Welcome",
-      tabBarLabel: "Home",
-      tabBarIcon: () => (
-        <Image style={styles.tabBarIcon} source={ImageTypes.BLUEJELLYBEAN} />
-      )
+      title: "Profile"
+      //header: null
     }
   }
 });
 
-const AppNavigator = StackNavigator({
+const DataNavigator = createStackNavigator({
   Root: {
-    screen: Home,
+    screen: Login,
     navigationOptions: {
-      title: "title",
+      title: "Data"
+      //header: null
+    }
+  }
+});
+
+const AppNavigator = createBottomTabNavigator({
+  MainTab: {
+    screen: ProfileNavigator,
+    navigationOptions: {
+      title: "Welcome",
+      tabBarLabel: "Profile"
+    }
+  },
+  DataNavigator: {
+    screen: DataNavigator,
+    navigationOptions: {
+      title: "Welcome",
+      tabBarLabel: "Data"
+    }
+  }
+});
+
+const EntryPoint = createStackNavigator({
+  Root: {
+    screen: Login, // Should Be Login
+    navigationOptions: {
+      title: "Login",
       header: null
     }
   },
-  GameScreen: {
-    screen: Game,
+  App: {
+    screen: AppNavigator, // Should be "App"
     navigationOptions: {
       title: "Play!",
       header: null
@@ -108,7 +138,8 @@ let styles = StyleSheet.create({
   },
   tabBarIcon: {
     width: 35,
-    height: 35
+    height: 35,
+    backgroundColor: "#c00ffe"
   },
   circle: {
     width: 70,
@@ -120,4 +151,4 @@ let styles = StyleSheet.create({
   }
 });
 
-module.exports = AppContainer;
+module.exports = EntryPoint;

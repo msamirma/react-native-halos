@@ -1,5 +1,3 @@
-import * as BeanActions from './beanActions'
+import * as loginActions from "./loginActions";
 
-export const ActionCreators = Object.assign({},
-  BeanActions,
-);
+export const ActionCreators = Object.assign({}, loginActions);

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ReactNative from "react-native";
 
-import SwappableGrid from "../components/SwappableGrid";
 //import {App} from './App';
 import Dimensions from "Dimensions";
+
+import { RkButton } from "react-native-ui-kitten";
 
 const {
   View,
@@ -30,12 +31,16 @@ class HomeScreen extends Component {
     return (
       <ImageBackground source={halosBackground} style={styles.backGroundImage}>
         <View style={styles.mainContainer}>
-          <TouchableHighlight
-            style={styles.header}
-            onPress={() => navigate("GameScreen")}
-          >
-            <Image source={halosLogo} style={styles.backGroundImage} />
-          </TouchableHighlight>
+          <View>
+            <RkButton
+              style={styles.button}
+              onPress={() => {
+                navigate("App");
+              }}
+            >
+              Login
+            </RkButton>
+          </View>
         </View>
       </ImageBackground>
     );
@@ -52,6 +57,9 @@ let styles = StyleSheet.create({
     marginTop: 20,
     flexDirection: "column",
     alignItems: "center"
+  },
+  button: {
+    backgroundColor: "#c00ffe"
   },
   header: {
     marginTop: 50,

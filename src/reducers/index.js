@@ -1,6 +1,4 @@
-import { combineReducers } from 'redux';
-import * as beanReducer from './beanReducers'
+import { combineReducers } from "redux";
+import * as loginReducers from "./loginReducers";
 
-export default combineReducers(Object.assign(
-  beanReducer,
-));
+export default combineReducers(Object.assign(loginReducers));
