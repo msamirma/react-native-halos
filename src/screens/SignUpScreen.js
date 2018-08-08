@@ -38,31 +38,13 @@ class HomeScreen extends Component {
             <RkTextInput
               style={styles.textInputs}
               rkType="loginField"
-              placeholder="Username"
+              placeholder="This is the signup sheet"
             />
             <RkTextInput
               style={styles.textInputs}
               rkType="loginField"
               placeholder="Password"
             />
-            <View style={styles.actionButtonsContainer}>
-              <RkButton
-                style={styles.actionButton}
-                onPress={() => {
-                  navigate("App");
-                }}
-              >
-                Login
-              </RkButton>
-              <RkButton
-                style={styles.actionButton}
-                onPress={() => {
-                  navigate("SignUp");
-                }}
-              >
-                Sign Up
-              </RkButton>
-            </View>
           </View>
         </View>
       </ImageBackground>

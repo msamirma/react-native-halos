@@ -12,7 +12,7 @@ import ImageTypes from "../components/ImageTypes";
 
 var ProfileScreen = require("../screens/ProfileScreen");
 var LoginScreen = require("../screens/LoginScreen");
-
+var SignUpScreen = require("../screens/SignUpScreen");
 const {
   View,
   Text,
@@ -20,85 +20,9 @@ const {
   Button,
   StyleSheet,
   Image,
+  Icon,
   ImageBackground
 } = ReactNative;
-
-import {
-  createBottomTabNavigator,
-  createStackNavigator
-} from "react-navigation";
-
-const Profile = ({ navigation, screenProps }) => {
-  return <ProfileScreen navigation={navigation} screenProps={screenProps} />;
-};
-
-const Login = ({ navigation, screenProps }) => {
-  return <LoginScreen navigation={navigation} screenProps={screenProps} />;
-};
-
-const ProfileNavigator = createStackNavigator({
-  Root: {
-    screen: Profile,
-    navigationOptions: {
-      title: "Profile"
-      //header: null
-    }
-  }
-});
-
-const DataNavigator = createStackNavigator({
-  Root: {
-    screen: Login,
-    navigationOptions: {
-      title: "Data"
-      //header: null
-    }
-  }
-});
-
-const AppNavigator = createBottomTabNavigator({
-  MainTab: {
-    screen: ProfileNavigator,
-    navigationOptions: {
-      title: "Welcome",
-      tabBarLabel: "Profile"
-    }
-  },
-  DataNavigator: {
-    screen: DataNavigator,
-    navigationOptions: {
-      title: "Welcome",
-      tabBarLabel: "Data"
-    }
-  }
-});
-
-const EntryPoint = createStackNavigator({
-  Root: {
-    screen: Login, // Should Be Login
-    navigationOptions: {
-      title: "Login",
-      header: null
-    }
-  },
-  App: {
-    screen: AppNavigator, // Should be "App"
-    navigationOptions: {
-      title: "Play!",
-      header: null
-    }
-  }
-});
-
-class AppContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return <AppNavigator screenProps={this.props} />;
-  }
-}
 
 let styles = StyleSheet.create({
   mainContainer: {
@@ -130,16 +54,14 @@ let styles = StyleSheet.create({
     textAlign: "center",
     color: "#fff"
   },
-
+  icon: {
+    height: 30,
+    width: 30
+  },
   container: {
     height: 350,
     width: 350,
     backgroundColor: "#f21859"
-  },
-  tabBarIcon: {
-    width: 35,
-    height: 35,
-    backgroundColor: "#c00ffe"
   },
   circle: {
     width: 70,
@@ -150,5 +72,95 @@ let styles = StyleSheet.create({
     borderColor: "#ffffff"
   }
 });
+
+import {
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
+
+const Profile = ({ navigation, screenProps }) => {
+  return <ProfileScreen navigation={navigation} screenProps={screenProps} />;
+};
+
+const Login = ({ navigation, screenProps }) => {
+  return <LoginScreen navigation={navigation} screenProps={screenProps} />;
+};
+
+const SignUp = ({ navigation, screenProps }) => {
+  return <SignUpScreen navigation={navigation} screenProps={screenProps} />;
+};
+
+const ProfileNavigator = createStackNavigator({
+  Root: {
+    screen: Profile,
+    navigationOptions: {
+      title: "Profile"
+      //header: null
+    }
+  }
+});
+
+const DataNavigator = createStackNavigator({
+  Root: {
+    screen: Login,
+    navigationOptions: {
+      title: "Data"
+      //header: null
+    }
+  }
+});
+
+const AppNavigator = createBottomTabNavigator({
+  MainTab: {
+    screen: ProfileNavigator,
+    navigationOptions: {
+      title: "Welcome",
+      tabBarLabel: "Profile",
+      tabBarIcon: (
+        <Image source={ImageTypes.PROFILE_TAB_LOGO} style={styles.icon} />
+      )
+    }
+  },
+  DataNavigator: {
+    screen: DataNavigator,
+    navigationOptions: {
+      title: "Welcome",
+      tabBarLabel: "Data"
+    }
+  }
+});
+
+const EntryPoint = createStackNavigator({
+  Root: {
+    screen: Login, // Should Be Login
+    navigationOptions: {
+      title: "Login",
+      header: null
+    }
+  },
+  SignUp: {
+    screen: SignUp, // Should Be Login
+    navigationOptions: {
+      title: "Sign Up"
+    }
+  },
+  App: {
+    screen: AppNavigator,
+    navigationOptions: {
+      title: "App",
+      header: null
+    }
+  }
+});
+
+class AppContainer extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <AppNavigator screenProps={this.props} />;
+  }
+}
 
 module.exports = EntryPoint;
