@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import ReactNative from "react-native";
+import React, { Component } from 'react';
+import ReactNative from 'react-native';
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { ActionCreators } from "../actions";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions';
 
 //import {App} from './App';
 import Dimensions from "Dimensions";
 
-import ImageTypes from "../components/ImageTypes";
+import ImageTypes from '../components/ImageTypes';
+import ProfileScreen from '../screens/Profile';
+import LoginScreen from '../screens/Login';
+import SignupScreen from '../screens/Signup';
 
-var ProfileScreen = require("../screens/ProfileScreen");
-var LoginScreen = require("../screens/LoginScreen");
-var SignUpScreen = require("../screens/SignUpScreen");
 const {
   View,
   Text,
@@ -87,7 +87,7 @@ const Login = ({ navigation, screenProps }) => {
 };
 
 const SignUp = ({ navigation, screenProps }) => {
-  return <SignUpScreen navigation={navigation} screenProps={screenProps} />;
+  return <SignupScreen navigation={navigation} screenProps={screenProps} />;
 };
 
 const ProfileNavigator = createStackNavigator({
