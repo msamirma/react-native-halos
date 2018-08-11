@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
 import { Accelerometer } from 'react-native-sensors';
+import styles from './styles';
 
 const Value = ({ name, value }) => (
   <View style={styles.valueContainer}>
@@ -8,38 +9,9 @@ const Value = ({ name, value }) => (
     <Text style={styles.valueValue}>{new String(value).substr(0, 8)}</Text>
   </View>
 );
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  headline: {
-    fontSize: 30,
-    textAlign: 'center',
-    margin: 10
-  },
-  valueContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap'
-  },
-  valueValue: {
-    width: 200,
-    fontSize: 20
-  },
-  valueName: {
-    width: 50,
-    fontSize: 20,
-    fontWeight: 'bold'
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
-  }
-});
-export default class Profile extends Component {
+
+
+export default class Profile extends React.Component {
   constructor(props) {
     super(props);
 
@@ -75,5 +47,3 @@ export default class Profile extends Component {
     );
   }
 }
-
-module.exports = Profile;

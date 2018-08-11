@@ -35,7 +35,10 @@ react-native run-android
 - Plot an array of geo data on a map. Interpolate and connect the dots.
 
 # React Native Components to Leverage
-## Map [react-native-maps](https://github.com/react-community/react-native-maps). [Tutorial](https://codeburst.io/react-native-google-map-with-react-native-maps-572e3d3eee14).
+
+## Map [react-native-maps](https://github.com/react-community/react-native-maps). 
+
+- [Tutorial](https://codeburst.io/react-native-google-map-with-react-native-maps-572e3d3eee14)
 
 ## Talking to Server
 
