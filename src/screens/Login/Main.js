@@ -41,7 +41,7 @@ const Main = ({ navigation }) => (
           <RkButton
             style={styles.actionButton}
             onPress={() => {
-              navigation.navigate('SignUp');
+              navigation.navigate('Signup');
             }}
           >
               Sign Up

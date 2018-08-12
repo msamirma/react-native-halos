@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
   tabBarIcon: {
-    width: 35,
-    height: 35
+    width: 32,
+    height: 32
   },
   container: {
     height: 350,

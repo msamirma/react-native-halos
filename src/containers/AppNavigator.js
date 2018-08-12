@@ -7,48 +7,50 @@ import {
 
 import ImageTypes from '../data/ImageTypes';
 import DrivingScreen from '../screens/Driving/Main';
-import LoginScreen from '../screens/Login/Main';
-import SignupScreen from '../screens/Signup';
 import styles from './styles';
 
 const {
-  Image
+  Image,
+  StatusBar,
+  View
 } = ReactNative;
 
 
-export const Profile = ({ navigation, screenProps }) => {
+const Profile = ({ navigation, screenProps }) => {
   return <DrivingScreen navigation={navigation} screenProps={screenProps} />;
-};
-
-export const Login = ({ navigation, screenProps }) => {
-  return <LoginScreen navigation={navigation} screenProps={screenProps} />;
-};
-
-export const Signup = ({ navigation, screenProps }) => {
-  return <SignupScreen navigation={navigation} screenProps={screenProps} />;
 };
 
 const ProfileNavigator = createStackNavigator({
   Root: {
     screen: Profile,
     navigationOptions: {
-      title: 'Profile'
-      //header: null
+      title: 'Profile',
+      headerStyle: { backgroundColor: '#1155cc' },
+      headerTitleStyle: { color: '#e8edf3' }
     }
   }
 });
 
 const DataNavigator = createStackNavigator({
   Root: {
-    screen: Login,
+    screen: Profile,
     navigationOptions: {
-      title: 'Data'
-      //header: null
+      title: 'Driving',
+      headerStyle: { backgroundColor: '#1155cc' },
+      headerTitleStyle: { color: '#e8edf3' }
     }
   }
 });
 
-export const AppNavigator = createBottomTabNavigator({
+const tabNavConfig = {
+  tabBarOptions: {
+    activeTintColor: '#1155cc',
+    labelStyle: {
+      fontSize: 11
+    }
+  }
+};
+const tabRouteConfig = {
   MainTab: {
     screen: ProfileNavigator,
     navigationOptions: {
@@ -88,4 +90,11 @@ export const AppNavigator = createBottomTabNavigator({
       )
     }
   }
-});
+};
+
+const AppNavigator = createBottomTabNavigator(
+  tabRouteConfig,
+  tabNavConfig
+);
+
+export default AppNavigator;

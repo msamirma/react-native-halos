@@ -5,7 +5,9 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from 'react-navigation';
-import { Login, Signup, AppNavigator } from './AppNavigator';
+import AppNavigator from './AppNavigator';
+import LoginScreen from '../screens/Login/Main';
+import SignupScreen from '../screens/Signup';
 
 const {
   View,
@@ -15,21 +17,33 @@ const {
   StyleSheet,
   Image,
   Icon,
+  StatusBar,
   ImageBackground
 } = ReactNative;
 
-const AppContainer = createStackNavigator({
-  Root: {
+const Login = ({ navigation, screenProps }) => {
+  return <LoginScreen navigation={navigation} screenProps={screenProps} />;
+};
+
+const Signup = ({ navigation, screenProps }) => {
+  return <SignupScreen navigation={navigation} screenProps={screenProps} />;
+};
+
+//This changes the header status icons (the battery and wifi) to white.
+StatusBar.setBarStyle('light-content', true);
+
+const stackNavRoutes = {
+  Login: {
     screen: Login, // Should Be Login Page
     navigationOptions: {
       title: 'Login',
       header: null
     }
   },
-  SignUp: {
+  Signup: {
     screen: Signup,
     navigationOptions: {
-      title: 'Sign Up'
+      title: 'Signup'
     }
   },
   App: { // After logging in, can use t
@@ -39,6 +53,15 @@ const AppContainer = createStackNavigator({
       header: null
     }
   }
-});
+};
+
+const stackNavConfig = {
+  initialRouteName: "Login",
+};
+
+const AppContainer = createStackNavigator(
+  stackNavRoutes,
+  stackNavConfig
+);
 
 export default AppContainer;
