@@ -7,19 +7,20 @@ import {
 
 import ImageTypes from '../data/ImageTypes';
 import DrivingScreen from '../screens/Driving/Main';
+import SettingsScreen from '../screens/Settings/Main';
 import styles from './styles';
 
 const {
-  Image,
-  StatusBar,
-  View
+  Image
 } = ReactNative;
 
 
 const Profile = ({ navigation, screenProps }) => {
   return <DrivingScreen navigation={navigation} screenProps={screenProps} />;
 };
-
+const Settings = ({ navigation, screenProps }) => {
+  return <SettingsScreen navigation={navigation} screenProps={screenProps} />;
+};
 const ProfileNavigator = createStackNavigator({
   Root: {
     screen: Profile,
@@ -36,6 +37,16 @@ const DataNavigator = createStackNavigator({
     screen: Profile,
     navigationOptions: {
       title: 'Driving',
+      headerStyle: { backgroundColor: '#1155cc' },
+      headerTitleStyle: { color: '#e8edf3' }
+    }
+  }
+});
+const SettingsNavigator = createStackNavigator({
+  Root: {
+    screen: Settings,
+    navigationOptions: {
+      title: 'Settings',
       headerStyle: { backgroundColor: '#1155cc' },
       headerTitleStyle: { color: '#e8edf3' }
     }
@@ -78,7 +89,7 @@ const tabRouteConfig = {
     }
   },
   Settings: {
-    screen: DataNavigator,
+    screen: SettingsNavigator,
     navigationOptions: {
       title: 'Settings',
       tabBarLabel: 'Settings',

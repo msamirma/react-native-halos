@@ -56,7 +56,7 @@ const stackNavRoutes = {
 };
 
 const stackNavConfig = {
-  initialRouteName: "Login",
+  initialRouteName: "Login"
 };
 
 const AppContainer = createStackNavigator(
